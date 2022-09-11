@@ -17,3 +17,11 @@ services:
       - "80:80"
     depends_on:
       - flask_app
+  
+  bot:
+    container_name: bot
+    restart: always
+    build: ./bot
+    depends_on:
+      - flask_app
+    command: python3 bot.py
