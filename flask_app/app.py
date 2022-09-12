@@ -1,7 +1,10 @@
-from flask import Flask
+import flask
 import os
+from dotenv import load_dotenv
 
-server = Flask(__name__)
+load_dotenv()
+
+server = flask.Flask(__name__)
 
 @server.route('/')
 def hello_world():

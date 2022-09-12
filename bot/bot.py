@@ -1,5 +1,8 @@
 import time
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 while True:
     print("Hello World!")
