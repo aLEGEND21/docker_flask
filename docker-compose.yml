@@ -24,4 +24,4 @@ services:
     build: ./bot
     depends_on:
       - flask_app
-    command: python3 bot.py
+    command: python3 -u bot.py
