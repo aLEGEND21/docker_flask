@@ -14,4 +14,5 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-CMD python3 -u ./bot/bot.py & gunicorn -w 1 -b 0.0.0.0:8000 wsgi:server
+CMD python3 -u ./bot/bot.py & gunicorn -w 1 wsgi:server
+# -b 0.0.0.0:8000 wsgi:server
