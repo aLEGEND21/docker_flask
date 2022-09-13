@@ -8,8 +8,6 @@ COPY nginx/project.conf /etc/nginx/conf.d/
 FROM python:3.10.0
 
 COPY requirements.txt .
-RUN pip install -U pip
-RUN pip install --upgrade pyls -i https://pypi.python.org/simple
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install -r requirements.txt
 
 CMD python3 bot/bot.py & gunicorn -w 1 -b 0.0.0.0:5000 wsgi:server
