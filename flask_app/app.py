@@ -8,6 +8,7 @@ server = flask.Flask(__name__)
 
 @server.route('/')
 def hello_world():
+    print("Received request")
     return 'hello world!'
 
 print("Starting server...")
