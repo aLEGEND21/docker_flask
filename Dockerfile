@@ -8,6 +8,7 @@ COPY nginx/project.conf /etc/nginx/conf.d/
 FROM python:3.10.0
 
 COPY requirements.txt .
+RUN pip install -U pip
 RUN pip install --upgrade pyls -i https://pypi.python.org/simple
 RUN pip install --no-cache-dir -r requirements.txt
 
