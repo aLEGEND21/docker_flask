@@ -1,0 +1,23 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: |
+        echo -e "SECERT_KEY=${{ secrets.SECRET_KEY }}" > .env
+        docker login -u alegend217 -p ${{ secrets.DOCKER_PASSWORD }}
+        docker build ./ -t docker_flask
+        docker tag docker_flask alegend217/docker_flask
+        docker push alegend217/docker_flask

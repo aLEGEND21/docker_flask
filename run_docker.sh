@@ -1,9 +1,8 @@
 echo killing old docker processes
-sudo docker-compose rm -fs
+docker kill $(docker ps -a -q)
 
-echo copying .env file
-cp ./.env ./bot/.env
-cp ./.env ./flask_app/.env
+echo updating docker images
+docker pull alegend217/docker_flask
 
-echo building docker containers
-sudo docker-compose up --build -d
+echo running docker container
+docker run -d -p 5000:5000 -p 80:80 alegend217/docker_flask
