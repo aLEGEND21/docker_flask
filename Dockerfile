@@ -8,6 +8,7 @@ COPY nginx/project.conf /etc/nginx/conf.d/
 FROM python:3.10.0
 
 COPY requirements.txt .
-RUN pip3 install -r requirements.txt
+RUN pip install setuptools --upgrade
+RUN pip install -r requirements.txt
 
 CMD python3 bot/bot.py & gunicorn -w 1 -b 0.0.0.0:5000 wsgi:server
