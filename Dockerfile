@@ -5,7 +5,7 @@ COPY nginx/nginx.conf /etc/nginx/
 RUN rm /etc/nginx/conf.d/default.conf
 COPY nginx/project.conf /etc/nginx/conf.d/
 
-FROM python:3.10.7
+FROM python:3.10.0
 
 COPY requirements.txt .
 RUN pip install -r requirements.txt
