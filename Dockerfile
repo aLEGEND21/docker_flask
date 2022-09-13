@@ -7,6 +7,8 @@ COPY nginx/project.conf /etc/nginx/conf.d/
 
 FROM python:3.10.0
 
+WORKDIR /usr/src/docker_flask
+
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 
