@@ -12,14 +12,24 @@ services:
     command: gunicorn -w 1 -b 0.0.0.0:8000 wsgi:server
   
   nginx:
-    container_name: nginx
+    #container_name: nginx
     restart: always
-    build: ./nginx
+    #build: ./nginx
+    image: nginx:latest
     ports:
       - "80:80"
       - "443:443"
     depends_on:
       - flask_app
+    volumes:
+      - /etc/nginx/conf.d/:/etc/nginx/conf.d/:ro
+      - /var/www/certbot/:/var/www/certbot/:ro
+  
+  certbot:
+    image: certbot/certbot:latest
+    volumes:
+      - /var/www/certbot/:/var/www/certbot/:rw
+      - /etc/letsencrypt/:/etc/letsencrypt/:rw
   
   bot:
     container_name: bot
