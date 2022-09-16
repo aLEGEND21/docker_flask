@@ -12,10 +12,8 @@ services:
     command: gunicorn -w 1 -b 0.0.0.0:8000 wsgi:server
   
   nginx:
-    #container_name: nginx
-    restart: always
-    #build: ./nginx
     image: nginx:latest
+    restart: always
     ports:
       - "80:80"
       - "443:443"
